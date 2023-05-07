@@ -29,11 +29,15 @@ public class User {
         this.name = name;
     }
 
+    public static User createUser() {
+        User user = new User();
+        user.setId(10L);
+        user.setName("Herry");
+        return user;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "User{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

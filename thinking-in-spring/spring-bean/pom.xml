@@ -7,13 +7,10 @@
         <groupId>org.jooye</groupId>
         <artifactId>thinking-in-spring</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
-
     <groupId>org.jooye</groupId>
-    <artifactId>ioc-container-overview</artifactId>
-
-    <name>ioc-container-overview</name>
+    <artifactId>spring-bean</artifactId>
+    <name>spring-bean</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,13 +22,24 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.11</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
-    </dependencies>
 
+        <!--复用-->
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>ioc-container-overview</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooye</groupId>
+            <artifactId>ioc-container-overview</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

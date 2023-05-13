@@ -10,7 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 /**
  * @author :Jone
  * @date : 2023/5/9 20:07
- * @Describe:类的描述信息
+ * @Describe: 类型安全的依赖查找示例
  */
 public class TypeSafetyDependencyLookup {
     public static void main(String[] args) {
@@ -24,7 +24,13 @@ public class TypeSafetyDependencyLookup {
         displayBeanFactoryGetObject(applicationContext);
         displayObjectProviderIfAvailable(applicationContext);
         displayListableBeanFactoryOfBeansType(applicationContext);
+        displayObjectProvidersStreamsOps(applicationContext);
         applicationContext.close();
+    }
+
+    private static void displayObjectProvidersStreamsOps(AnnotationConfigApplicationContext applicationContext) {
+        ObjectProvider<User> objectProvider = applicationContext.getBeanProvider(User.class);
+        printBeansException("displayObjectProvidersStreamsOps",()->objectProvider.forEach(System.out::println));
     }
 
     private static void displayListableBeanFactoryOfBeansType(ListableBeanFactory applicationContext) {
@@ -48,8 +54,8 @@ public class TypeSafetyDependencyLookup {
     }
 
     private static void printBeansException(String source, Runnable runnable) {
-        System.out.println("===================================");
-        System.out.println("source from :" + source);
+        System.err.println("===================================");
+        System.err.println("source from :" + source);
         try {
             runnable.run();
         } catch (BeansException e) {

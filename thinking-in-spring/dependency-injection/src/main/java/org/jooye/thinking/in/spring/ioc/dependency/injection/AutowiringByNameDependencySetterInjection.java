@@ -5,14 +5,14 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
  * @author :Jone
- * @date : 2023/5/13 22:42
- * @Describe: 基于XML资源的依赖Setter方式注入示例
+ * @date : 2023/5/19 23:26
+ * @Describe: ByName Autowiring依赖Setter方法注入示例
  */
-public class XmlDependencySetterInjection {
+public class AutowiringByNameDependencySetterInjection {
     public static void main(String[] args) {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
-        String location = "classpath:/META-INF/dependency-setter-injection.xml";
+        String location = "classpath:/META-INF/autowiring-dependency-setter-injection.xml";
         //加载XMl资源，解析并生成BeanDefinition
         reader.loadBeanDefinitions(location);
         UserHolder userHolder = beanFactory.getBean(UserHolder.class);

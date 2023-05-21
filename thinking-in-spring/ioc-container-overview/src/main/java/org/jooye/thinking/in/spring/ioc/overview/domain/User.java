@@ -1,5 +1,7 @@
 package org.jooye.thinking.in.spring.ioc.overview.domain;
 
+import org.jooye.thinking.in.spring.ioc.overview.enums.City;
+
 /**
  * @author :Jone
  * @date : 2023/5/7 10:18
@@ -11,6 +13,9 @@ public class User {
 
 
     private String name;
+
+
+    private City city;
 
 
     public Long getId() {
@@ -29,6 +34,14 @@ public class User {
         this.name = name;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     public static User createUser() {
         User user = new User();
         user.setId(10L);
@@ -38,6 +51,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name='" + name + '\'' + '}';
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city=" + city +
+                '}';
     }
 }

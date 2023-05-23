@@ -8,6 +8,13 @@
     <bean id="user" class="org.jooye.thinking.in.spring.ioc.overview.domain.User">
         <property name="id" value="1"/>
         <property name="name" value="jooye"/>
+        <property name="works" value="BEIJING,SHENZHEN"/>
+        <property name="lifeCities" >
+            <list>
+                <value>BEIJING</value>
+                <value>SHENZHEN</value>
+            </list>
+        </property>
     </bean>
 
     <bean id="superUser" class="org.jooye.thinking.in.spring.ioc.overview.domain.SuperUser" parent="user"

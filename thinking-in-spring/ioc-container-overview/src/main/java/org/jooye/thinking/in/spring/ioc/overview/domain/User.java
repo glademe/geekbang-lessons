@@ -2,6 +2,9 @@ package org.jooye.thinking.in.spring.ioc.overview.domain;
 
 import org.jooye.thinking.in.spring.ioc.overview.enums.City;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author :Jone
  * @date : 2023/5/7 10:18
@@ -17,6 +20,11 @@ public class User {
 
     private City city;
 
+
+    private City[] works;
+
+
+    private List<City> lifeCities;
 
     public Long getId() {
         return id;
@@ -42,6 +50,22 @@ public class User {
         this.city = city;
     }
 
+    public City[] getWorks() {
+        return works;
+    }
+
+    public void setWorks(City[] works) {
+        this.works = works;
+    }
+
+    public List<City> getLifeCities() {
+        return lifeCities;
+    }
+
+    public void setLifeCities(List<City> lifeCities) {
+        this.lifeCities = lifeCities;
+    }
+
     public static User createUser() {
         User user = new User();
         user.setId(10L);
@@ -55,6 +79,8 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", city=" + city +
+                ", works=" + Arrays.toString(works) +
+                ", lifeCities=" + lifeCities +
                 '}';
     }
 }

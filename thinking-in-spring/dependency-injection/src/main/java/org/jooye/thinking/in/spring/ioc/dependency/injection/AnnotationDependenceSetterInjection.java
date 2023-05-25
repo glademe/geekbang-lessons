@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Bean;
 public class AnnotationDependenceSetterInjection {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-
-
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(context);
         String location = "classpath:/META-INF/dependency-lookup-context.xml";
+
+
         //加载XMl资源，解析并生成BeanDefinition
         reader.loadBeanDefinitions(location);
         context.refresh();

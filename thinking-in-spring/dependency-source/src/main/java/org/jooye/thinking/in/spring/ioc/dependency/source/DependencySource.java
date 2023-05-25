@@ -1,16 +1,19 @@
 package org.jooye.thinking.in.spring.ioc.dependency.source;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
 
 import javax.annotation.PostConstruct;
 
 /**
- * @author :Jone
+ * @author :Jorry
  * @date : 2023/5/25 21:22
  * @Describe: 依赖来源示例
  */
@@ -39,6 +42,25 @@ public class DependencySource {
         System.out.println("beanFactory == application.getAutowireCapableBeanFactory\t" + (applicationEventPublisher == applicationContext));
     }
 
+    @PostConstruct
+    public void initByLookup() {
+        getBean(BeanFactory.class);
+        getBean(ApplicationContext.class);
+        getBean(ResourceLoader.class);
+        getBean(ApplicationEventPublisher.class);
+    }
+
+
+    public <T> T getBean(Class<T> beanType) {
+        T bean = null;
+        try {
+            bean = beanFactory.getBean(beanType);
+        } catch (NoSuchBeanDefinitionException e) {
+            System.err.println("当前类型" + beanType.getName() + "无法再BeanFactory中查找!");
+            return null;
+        }
+        return bean;
+    }
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
